@@ -1,6 +1,3 @@
-# hello-world
-hello world thing
-hi this is me
-
-kevin is kil
-no
+# Midyear Project
+Game Name: Tal of Duty
+Game Premise: Fight people and don't die
