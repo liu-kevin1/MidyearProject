@@ -9,7 +9,7 @@ while true do
 	local Hum = workspace:WaitForChild(PlayerName).Humanoid
 	
 	if IsRunning.Value then
-		Hum.WalkSpeed = 32
+		Hum.WalkSpeed = 24
 		Stamina.Current.Value = Stamina.Current.Value - 2
 		
 		if Stamina.Current.Value <= 0 then

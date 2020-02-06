@@ -2,7 +2,6 @@ local medkit = script.Parent.Handle
 local healed = false
 
 local function heal(object)
-	print(object)
 	if object.Parent:FindFirstChild("Humanoid")~= nil and not healed then
 		healed = true
 		local name = object.Parent.Humanoid.Parent.Name

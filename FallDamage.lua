@@ -18,13 +18,11 @@ workspace:WaitForChild(PlayerName).Humanoid:GetPropertyChangedSignal("FloorMater
 			
 			bot_y = workspace[PlayerName].HumanoidRootPart.Position.Y
 			
-			if top_y - bot_y > 20 then
+			if top_y - bot_y > 18 then
 			
-				local damage = 2 * math.sqrt(10 * (top_y - 20))
+				local damage = 2.25 * math.sqrt(10 * (top_y - 20))
 				
 				Health.Current.Value = Health.Current.Value - damage
-				
-				print("damage: " .. damage)
 			end
 		end
 	end
