@@ -62,4 +62,9 @@ MainButton.MouseButton1Click:Connect(function()
 	tween:Play()
 	
 	script.Parent.Back.Visible = false
+	
+	LocalPlayer.CameraMode = Enum.CameraMode.LockFirstPerson
+	
+	script.Parent:Destroy()
 end)
+

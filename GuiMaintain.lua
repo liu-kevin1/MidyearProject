@@ -11,6 +11,7 @@ local Health = Resources.Health
 
 local StaminaBar = script.Parent.Stamina.Front
 local HealthBar = script.Parent.Health.Front
+local RedScreen = script.Parent.RedScreen
 
 local HEALTH_X_SIZE = 0.5
 local STAMINA_X_SIZE = 0.4
@@ -38,6 +39,8 @@ end
 
 local function update_health()
 	update_bar(HealthBar, Health, HEALTH_X_SIZE)
+	local ratio = Health.Current.Value / Health.Max.Value
+	RedScreen.Transparency = ratio + 0.2
 end
 
 

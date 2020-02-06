@@ -17,6 +17,8 @@ local function player_joined(player)
 	
 	local Copy3 = PutInCharacterRoot.PlayerRootLight:Clone()
 	Copy3.Parent = workspace:WaitForChild(player.Name).HumanoidRootPart
+	
+	workspace:WaitForChild(player.Name).Humanoid.JumpPower = 30
 end
 
 local function player_left(player)
