@@ -2,6 +2,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
+local HealthText = script.Parent.Health.HealthText
 
 local PlayerBase = ReplicatedStorage:WaitForChild(LocalPlayer.Name)
 local Resources = PlayerBase.Resources
@@ -40,7 +41,9 @@ end
 local function update_health()
 	update_bar(HealthBar, Health, HEALTH_X_SIZE)
 	local ratio = Health.Current.Value / Health.Max.Value
-	RedScreen.Transparency = ratio + 0.2
+	RedScreen.Transparency = ratio + 0.3
+	
+	HealthText.Text = (math.ceil(Health.Current.Value)) .. "/100"
 end
 
 
