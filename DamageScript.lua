@@ -17,24 +17,24 @@ local function touchedEvent(object)
 		elseif object.Identifier.Value == "Zombie" then
 			local hum = object.Humanoid
 			
-			if hit[hum.Name] == nil then
-				hit[hum.Name] = true
+			if hit[hum] == nil then
+				hit[hum] = true
 				hum.Health = hum.Health - Damage
 			end
 		end
-	elseif object:FindFirstChild("Identifier") ~= nil then
+	elseif object.Parent:FindFirstChild("Identifier") ~= nil then
 		if object.Parent.Identifier.Value == "Barrel" and Shooter ~= "Barrel" then
 			local hum = object.Parent.Humanoid
 			
-			if hit[hum.Name] == nil then
-				hit[hum.Name] = true
+			if hit[hum] == nil then
+				hit[hum] = true
 				hum.Health = hum.Health - Damage
 			end
 		elseif object.Parent.Identifier.Value == "Zombie" then
 			local hum = object.Parent.Humanoid
 			
-			if hit[hum.Name] == nil then
-				hit[hum.Name] = true
+			if hit[hum] == nil then
+				hit[hum] = true
 				hum.Health = hum.Health - Damage
 			end
 		end
@@ -50,11 +50,6 @@ local function touchedEvent(object)
 					current.Value = current.Value - Damage
 					
 					if current.Value <= 0 then
-						if Shooter ~= "Barrel" then
-							local kills = ReplicatedStorage[Shooter].Stats.Kills
-							kills.Value = kills.Value + 1
-						end
-						
 						local kill_message = Shooter .. " killed " .. name
 						
 						if KillQueue.q5.Value ~= "" then
@@ -75,6 +70,11 @@ local function touchedEvent(object)
 							elseif KillQueue.q5.Value == "" then
 								KillQueue.q5.Value = kill_message
 							end
+						end
+						
+						if Shooter ~= "Barrel" or Shooter ~= "Zombie" then
+							local kills = ReplicatedStorage[Shooter].Stats.Kills
+							kills.Value = kills.Value + 1
 						end
 					end
 				end

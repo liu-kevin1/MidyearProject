@@ -25,11 +25,7 @@ end
 
 function main_module.fireBullet(module)
 	if module.current_ammo.Value > 0 then
-		FireBulletEvent:FireServer(
-			Mouse.Hit, 
-			module.DAMAGE.Value, 
-			script.Parent.Handle.Position
-			)
+		FireBulletEvent:FireServer(Mouse.Hit, module.DAMAGE.Value)
 		module.current_ammo.Value = module.current_ammo.Value - 1
 	else if not module.reloading then
 		module.reloading = true

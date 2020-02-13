@@ -8,12 +8,12 @@ local SpawnBoxCenterPos = workspace.DeathBox.SpawnBoxCenter.Position
 local function playerDied()
 	local root = workspace[PlayerName].HumanoidRootPart
 	root.Position = SpawnBoxCenterPos
-	wait(4)
+	wait(8)
 	Health.Current.Value = Health.Max.Value
 	local spawnLocations = workspace.Spawn1:GetChildren()
 	
 	local chosenLocation = math.random(1, table.getn(spawnLocations))
-	root.Position = spawnLocations[chosenLocation].Position
+	root.CFrame = spawnLocations[chosenLocation].CFrame
 	
 	print(PlayerName .. " died")
 	PlayerBase.Stats.Deaths.Value = PlayerBase.Stats.Deaths.Value + 1

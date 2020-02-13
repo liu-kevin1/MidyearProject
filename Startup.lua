@@ -14,7 +14,7 @@ local Copy3 = game.ReplicatedStorage.PlayerRootLight:Clone()
 Copy3.Parent = workspace:WaitForChild(LocalPlayer.Name):WaitForChild("HumanoidRootPart")
 
 local lore = [[
-	In the year 2045, as tensions between world nations mounted over water scarcity due to human overpopulation and global warming, the branch snapped, and China decimated New York City with a nuclear bomb. All out nuclear war ensued, and the entire planet was promptly destroyed except for a few civilizations just barely scorched by the destruction. 80 years later, irradiated creatures have taken over, and hundreds of factions fight for power over the little land that is left habitable.
+	In the year 2045, as tensions between world nations mounted over water scarcity due to human overpopulation and global warming, the tension finally snapped, and China decimated New York City with a nuclear warhead. All out nuclear war ensued, and the entire planet was promptly destroyed except for a few civilizations just barely scorched by the destruction. 80 years later, irradiated creatures have taken over, and hundreds of factions fight for power over the little land that is left habitable.
 	
 	]]
 

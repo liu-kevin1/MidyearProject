@@ -11,6 +11,7 @@ local PlayerBase = ReplicatedStorage:WaitForChild(LocalPlayer.Name)
 local dead = false
 
 local function displayDeathScreen()
+	
 	local tweenInfo = TweenInfo.new(1)
 	local back_goal = {}
 	back_goal.BackgroundTransparency = 0
@@ -22,6 +23,7 @@ local function displayDeathScreen()
 	local text_tween = TweenService:Create(death_text, tweenInfo, text_goal)
 	
 	back_tween:Play()
+	wait(1)
 	text_tween:Play()
 end
 

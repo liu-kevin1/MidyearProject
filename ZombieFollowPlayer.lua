@@ -1,7 +1,10 @@
 -- Edit the max zombie distance with this value --
-maxdistance = 100000
+maxdistance = 1000000
 
-
+local ServerStorage = game:GetService("ServerStorage")
+local DamageObjects = ServerStorage.DamageObjects
+local DamageFolder = DamageObjects.DamageFolder
+local Hitbox = DamageObjects.Hitbox
 
 -- Initializes the service: "PathfindingService"
 local PathfindingService = game:GetService("PathfindingService")
@@ -9,14 +12,24 @@ local PathfindingService = game:GetService("PathfindingService")
 local Players = game:GetService("Players")
 
 -- Assigns variables to the zombie model --
-local zombie = game.Workspace.FollowPlayerZombie
-local humanoid = zombie.Humanoid
-local HumRtPart = zombie.HumanoidRootPart
+local zombie = script.Parent
+local humanoid = script.Parent:FindFirstChild("Humanoid")
+local HumRtPart = script.Parent:FindFirstChild("HumanoidRootPart")
 
+local function attack()
+	local new_hitbox = Hitbox:Clone()
+	local folder = DamageFolder:Clone()
+	folder.Damage.Value = 5
+	folder.DespawnTime.Value = 0.5
+	folder.DestroyObject.Value = new_hitbox
+	folder.Shooter.Value = "Zombie"
+	folder.Parent = new_hitbox
+	new_hitbox.CFrame = HumRtPart.CFrame
+	new_hitbox.Parent = workspace
+end
 
--- Function to locate the nearest player to the zombie --
 local function FindClosestPlayer(maxdistance)
-	-- List to store each player found --
+		-- List to store each player found --
 	local PlayerList =  {}
 	-- Variable of the player to be followed
 	local PlayerLockedOn = nil
@@ -28,6 +41,9 @@ local function FindClosestPlayer(maxdistance)
 		-- If there player is within the max distance, place the player in the list to be followed-
 		if PlayerDistance <= maxdistance then
 			table.insert(PlayerList, {PlayerDistance, v})
+			if PlayerDistance <= 5 then
+				attack()
+			end
 		end
 	end
 	
@@ -41,23 +57,23 @@ local function FindClosestPlayer(maxdistance)
 	pcall(function()
 		PlayerLockedOn = PlayerList[1][2]
 	end)
-	
-	print(PlayerLockedOn)
 	return PlayerLockedOn
 	
 end
-	
+
 
 -- While loop that always pathfinds the zombie to the target player --
+wait(5)
+
 while true do
-    wait()
 	    -- Sets the selected player as the returned value from the FindClosestPlayer function
     local SelectedPlayer = FindClosestPlayer(maxdistance)
     if SelectedPlayer == nil then return end
-    humanoid:MoveTo(SelectedPlayer)
+    humanoid:MoveTo(SelectedPlayer.Character.PrimaryPart.Position)
+	humanoid.Jump = true
     humanoid.MoveToFinished:Wait()
 end
-	
+
 
 
 

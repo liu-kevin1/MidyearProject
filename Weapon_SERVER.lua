@@ -6,12 +6,12 @@ FireBulletEvent.Name = "FireBulletEvent"
 local Bullet = ServerStorage.DamageObjects.Bullet
 local damageFolder = ServerStorage.DamageObjects.DamageFolder
 
-local function fireBullet(player, position, damage)
+local function fireBullet(player, bullet_target, damage, spawn_pos)
 	local char = workspace[player.Name]
 	
 	local bullet = Bullet:Clone()
-	bullet.CFrame = char.HumanoidRootPart.CFrame * CFrame.new(0, 0, -2)
-	bullet.BodyVelocity.Velocity = position.lookVector * 60
+	bullet.Position = spawn_pos
+	bullet.BodyVelocity.Velocity = bullet_target.lookVector * 60
 	bullet.BodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
 	bullet.BodyVelocity.P = 10000
 	
